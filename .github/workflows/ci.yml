@@ -49,7 +49,7 @@ jobs:
       #   run: ls -la
 
       - name: Install dependencies
-        run: flask install
+        run: pip install flask
 
       # - name: Test with pytest
       #   run: |
