@@ -2,10 +2,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
-
+@app.route('/app/')
+def first():
+    return '<h1>Hello, first page</h1>'
 
 @app.route('/app/home')
-def hello():
+def home():
     return '<h1>Hello, Homepage !!! content for the homepage</h1>'
 
 @app.route('/app/aboutus')

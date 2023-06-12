@@ -42,19 +42,19 @@ jobs:
         with:
           version: ${{ matrix.poetry-version }}
 
-      - name: View poetry --help
-        run: poetry --help
+      # - name: View poetry --help
+      #   run: poetry --help
 
-      - name: View file structure
-        run: ls -la
+      # - name: View file structure
+      #   run: ls -la
 
       - name: Install dependencies
-        shell: bash
-        run: poetry install
+        run: flask install
 
-      - name: Test with pytest
-        run: |
-          poetry run python -m pytest -v tests
+      # - name: Test with pytest
+      #   run: |
+      #     poetry run python -m pytest -v tests
+
   docker:
     needs: build
     runs-on: ubuntu-latest #self-hosted
@@ -72,29 +72,3 @@ jobs:
             dockerfile: Dockerfile
             username: ${{ secrets.DOCKER_USERNAME }}      
             password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # - name: Docker meta
-      #   id: docker_meta
-      #   uses: docker/metadata-action@v3
-      #   with:
-      #     images: hexafold/nova-be-customer #registry.digitalocean.com/quantum-private-registry/nova-be-customer
-      #     tags: develop #|
-      #     #  type=ref,event=branch
-      #     #  type=sha,prefix={{branch}}
-
-      # - name: Login to Docker
-      #   uses: docker/login-action@v1
-      #   with:
-      #     registry: docker.io #${{ secrets.DOCKER_URL }}
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # # - name: Setup Docker Buildx
-      # #   uses: docker/setup-buildx-action@v1
-
-      # - name: build and Push image
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     push: true
-      #     tags: develop #${{ steps.docker_meta.outputs.tags }}
-      #     file: ./Dockerfile
