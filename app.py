@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -25,5 +26,11 @@ def login():
 @app.route('/app/login/user')
 def login_user():
     return '<h1>Hello, Amn... this is for testing purpose</h1>'
+
+
+
+@app.route('/app/index')
+def index():
+    return render_template('index.html')
 
 
